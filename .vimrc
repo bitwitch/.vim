@@ -21,6 +21,7 @@ nnoremap <space> za " space open/closes folds
 " Key Mappings
 let mapleader=","         " leader is comma"
 inoremap jk <esc> 
+nnoremap <Leader>f :NERDTreeToggle<Enter>
 
 " allows cursor change in tmux mode
 if exists('$TMUX')
