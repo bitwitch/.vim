@@ -1,5 +1,5 @@
 # my vim config
-clone into home 
+clone into home    
 ```$ cd ~```  
 ```$ git clone --recurse-submodules git@github.com:bitwitch/vim-config.git```  
 
