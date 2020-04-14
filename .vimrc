@@ -1,36 +1,72 @@
-syntax on   
-set tabstop=4    
-set softtabstop=4  
-set expandtab       
+syntax on
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set smarttab
+autocmd FileType html setlocal shiftwidth=2 tabstop=2
+autocmd FileType htmldjango setlocal shiftwidth=2 tabstop=2
+autocmd FileType twig setlocal shiftwidth=2 tabstop=2
+autocmd FileType css  setlocal shiftwidth=2 tabstop=2
+autocmd FileType scss setlocal shiftwidth=2 tabstop=2
+autocmd FileType text setlocal shiftwidth=2 tabstop=2
+au BufRead,BufNewFile *.txt setlocal textwidth=80
+au BufRead,BufNewFile *.twig setlocal filetype=html
+autocmd FileType make setlocal noexpandtab
 set showcmd
 filetype plugin indent on
-autocmd FileType make setlocal noexpandtab
 set wildmenu
 set lazyredraw 
 set showmatch
 set incsearch
 set hlsearch
-nnoremap <leader><space> :nohlsearch<CR>
 set foldenable
 set foldlevelstart=10
 set foldnestmax=10
-nnoremap <space> za " space open/closes folds
+
+" Highlight TODO, FIXME, NOTE, etc.
+if has('autocmd') && v:version > 701
+    augroup todo
+        autocmd!
+        autocmd Syntax * call matchadd(
+            \ 'Debug',
+            \ '\v\W\zs<(NOTE|INFO|IDEA|TODO|FIXME|HACK)>'
+            \ )
+    augroup END
+endif
+
+" Plugins
+execute pathogen#infect()
 
 " Colors
+set t_Co=256
+set background=dark
+colorscheme iceberg
 
 " Key Mappings
-let mapleader=","         " leader is comma"
+let mapleader="," 
 inoremap jk <esc> 
-nnoremap <Leader>f :NERDTreeToggle<Enter>
+" yank to system keyboard
+noremap <leader>y "*y
+" space open/closes folds
+nnoremap <space> za
+noremap <C-k> d$
+noremap <C-e> $
+" jumping back to marks a,b,c
+noremap 'a `a
+noremap 'b `b
+noremap 'c `c
 
-" allows cursor change in tmux mode
-if exists('$TMUX')
-    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-else
-    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-endif
+" NERDTree
+nnoremap <leader>f :NERDTreeToggle<Enter>
+let NERDTreeShowHidden=1
+
+" NERDCommenter
+" nnoremap <C-/> :call NERDComment('n', "toggle")<Cr>
+
+" change cursor shape to line in insert mode
+let &t_SI.="\e[5 q"
+let &t_EI.="\e[1 q"
 
 " put backups in a tmp directory
 set backup
@@ -39,10 +75,4 @@ set backupskip=/tmp/*,/private/tmp/*
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set writebackup
 
-" plugins
-execute pathogen#infect()
 
-" CtrlP settings
-let g:ctrlp_match_window = 'bottom,order:ttb'
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_working_path_mode = 0
