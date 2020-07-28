@@ -7,6 +7,9 @@
 [submodule "bundle/Zenburn"]
 	path = bundle/Zenburn
 	url = git@github.com:jnurmine/Zenburn.git
+[submodule "bundle/iceberg"]
+	path = bundle/iceberg.vim
+	url = https://github.com/cocopon/iceberg.vim.git
 [submodule "bundle/vim-liquid"]
 	path = bundle/vim-liquid
 	url = git@github.com:tpope/vim-liquid.git
