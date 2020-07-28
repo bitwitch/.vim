@@ -1,8 +1,9 @@
 # my vim config
-clone into home    
+clone into home     
 ```$ cd ~```  
-```$ git clone --recurse-submodules git@github.com:bitwitch/.vim.git```  
+```$ git clone https://github.com/bitwitch/.vim.git```
 
-symlink config file   
-```$ ln -sf .vim/.vimrc ~/.vimrc``` 
+symlink config file  
+```$ ln -sf .vim/.vimrc ~/.vimrc```  
 
+Reload .vimrc and :PlugInstall to install plugins.
