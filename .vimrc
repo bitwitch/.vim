@@ -36,7 +36,17 @@ if has('autocmd') && v:version > 701
 endif
 
 " Plugins
-execute pathogen#infect()
+call plug#begin('~/.vim/plugged')
+Plug 'preservim/nerdtree'
+Plug 'preservim/nerdcommenter'
+Plug 'tpope/vim-sensible'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'rking/ag.vim'
+Plug 'ggreer/the_silver_searcher'
+Plug 'cocopon/colorswatch.vim'
+Plug 'cocopon/iceberg.vim'
+Plug 'fatih/vim-go'
+call plug#end()
 
 " Colors
 set t_Co=256
