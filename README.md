@@ -9,9 +9,9 @@ symlink config file
 Reload .vimrc and :PlugInstall to install plugins.
 
 *optional*  
-change <leader> + cc to TOGGLE comments
+change leader + cc to TOGGLE comments
 1. ```$ vim ~/.vim/plugged/nerdcommenter/plugin/NERD_commenter.vim```  
 2. scroll to the bottom of the file where the keymappings are and swap the key
-   bindings for Comment and Toggle. By default Comment is <leader> + c<space>
-   and Toggle is <leader> + cc.
+   bindings for Comment and Toggle. By default Comment is leader + c[space]
+   and Toggle is leader + cc.
 
