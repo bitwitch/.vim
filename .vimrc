@@ -8,6 +8,7 @@ autocmd FileType html setlocal shiftwidth=2 tabstop=2
 autocmd FileType htmldjango setlocal shiftwidth=2 tabstop=2
 autocmd FileType twig setlocal shiftwidth=2 tabstop=2
 autocmd FileType css  setlocal shiftwidth=2 tabstop=2
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 autocmd FileType scss setlocal shiftwidth=2 tabstop=2
 autocmd FileType text setlocal shiftwidth=2 tabstop=2
 au BufRead,BufNewFile *.txt setlocal textwidth=80
@@ -40,7 +41,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'preservim/nerdtree'
 Plug 'preservim/nerdcommenter'
 Plug 'tpope/vim-sensible'
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'rking/ag.vim'
 Plug 'ggreer/the_silver_searcher'
 Plug 'cocopon/colorswatch.vim'
