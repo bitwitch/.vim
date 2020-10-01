@@ -66,13 +66,14 @@ noremap <C-e> $
 noremap 'a `a
 noremap 'b `b
 noremap 'c `c
+" F7 to compile and run 
+autocmd FileType cpp map <F7> :!make && bin/demo <CR>
+" NOTE: this only works for a very specfic makefile and if run from project
+" root where Makefile is located
 
 " NERDTree
 nnoremap <leader>f :NERDTreeToggle<Enter>
 let NERDTreeShowHidden=1
-
-" NERDCommenter
-" nnoremap <C-/> :call NERDComment('n', "toggle")<Cr>
 
 " change cursor shape to line in insert mode
 let &t_SI.="\e[5 q"
