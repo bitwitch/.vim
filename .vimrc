@@ -13,6 +13,7 @@ autocmd FileType scss setlocal shiftwidth=2 tabstop=2
 autocmd FileType text setlocal shiftwidth=2 tabstop=2
 au BufRead,BufNewFile *.txt setlocal textwidth=80
 au BufRead,BufNewFile *.twig setlocal filetype=html
+au BufRead,BufNewFile *.p8 setlocal filetype=lua
 autocmd FileType make setlocal noexpandtab
 set showcmd
 filetype plugin indent on
@@ -70,6 +71,11 @@ noremap 'c `c
 autocmd FileType cpp map <F7> :!make && bin/demo <CR>
 " NOTE: this only works for a very specfic makefile and if run from project
 " root where Makefile is located
+
+" Open man pages with vim pager (:Man <manpage> or K on word under cursor)
+runtime! ftplugin/man.vim
+noremap K :Man <C-R><C-W> <CR>
+
 
 " NERDTree
 nnoremap <leader>f :NERDTreeToggle<Enter>
