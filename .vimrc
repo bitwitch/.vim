@@ -45,7 +45,6 @@ Plug 'tpope/vim-sensible'
 Plug 'rking/ag.vim'
 Plug 'ggreer/the_silver_searcher'
 Plug 'cocopon/iceberg.vim'
-"Plug 'fatih/vim-go'
 call plug#end()
 
 " Colors
@@ -57,7 +56,7 @@ colorscheme iceberg
 let mapleader="," 
 inoremap jk <esc> 
 " yank to system keyboard
-noremap <leader>y "+y
+noremap <leader>y "*y
 " space open/closes folds
 nnoremap <space> za
 noremap <C-k> d$
@@ -66,15 +65,10 @@ noremap <C-e> $
 noremap 'a `a
 noremap 'b `b
 noremap 'c `c
-" F7 to compile and run 
-autocmd FileType cpp map <F7> :!make && bin/demo <CR>
-" NOTE: this only works for a very specfic makefile and if run from project
-" root where Makefile is located
 
 " Open man pages with vim pager (:Man <manpage> or K on word under cursor)
 runtime! ftplugin/man.vim
 noremap K :Man <C-R><C-W> <CR>
-
 
 " NERDTree
 nnoremap <leader>f :NERDTreeToggle<Enter>
