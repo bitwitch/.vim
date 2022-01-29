@@ -43,9 +43,8 @@ Plug 'preservim/nerdcommenter'
 Plug 'tpope/vim-sensible'
 Plug 'rking/ag.vim'
 Plug 'ggreer/the_silver_searcher'
-Plug 'cocopon/colorswatch.vim'
 Plug 'cocopon/iceberg.vim'
-Plug 'fatih/vim-go'
+"Plug 'fatih/vim-go'
 call plug#end()
 
 " Colors
@@ -57,7 +56,7 @@ colorscheme iceberg
 let mapleader="," 
 inoremap jk <esc> 
 " yank to system keyboard
-noremap <leader>y "*y
+noremap <leader>y "+y
 " space open/closes folds
 nnoremap <space> za
 noremap <C-k> d$
@@ -74,6 +73,39 @@ autocmd FileType cpp map <F7> :!make && bin/demo <CR>
 " NERDTree
 nnoremap <leader>f :NERDTreeToggle<Enter>
 let NERDTreeShowHidden=1
+
+" compilation
+let g:QuickMakeAutoDetect = 1
+
+function! s:QuickMake()
+	if g:QuickMakeAutoDetect == "1"
+		" Attempt to auto-detect build system
+		if filereadable("Makefile")
+			set makeprg=make
+		elseif filereadable("build")
+			set makeprg=./build
+		endif
+	endif
+
+	let format = &errorformat	" capture current local efm
+	:wall
+	:copen
+	silent! :make
+	let &efm=format " transfer error format to quickfix buffer
+endfunction
+
+command! -nargs=0 QuickMake :call s:QuickMake()
+
+" Shortcuts to pop open and close the quickfix
+nmap <F5> :copen<CR>
+nmap <F6> :cclose<CR>
+
+nmap <F7> :QuickMake<CR>
+
+" Use F8/F9 to jump between errors in the quickfix window
+nmap <F8> :cprev<CR>
+nmap <F9> :cnext<CR>
+
 
 " change cursor shape to line in insert mode
 let &t_SI.="\e[5 q"
