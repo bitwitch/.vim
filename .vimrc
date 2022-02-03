@@ -42,9 +42,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'preservim/nerdtree'
 Plug 'preservim/nerdcommenter'
 Plug 'tpope/vim-sensible'
-Plug 'rking/ag.vim'
-Plug 'ggreer/the_silver_searcher'
 Plug 'cocopon/iceberg.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 
 " Colors
