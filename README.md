@@ -9,6 +9,7 @@ symlink config file
 Reload .vimrc and :PlugInstall to install plugins.  
 
 *optional*  
+---
 Change leader + cc to TOGGLE comments  
 1. ```$ vim ~/.vim/plugged/nerdcommenter/plugin/NERD_commenter.vim```  
 2. scroll to the bottom of the file where the keymappings are and swap the key  
