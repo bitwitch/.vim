@@ -44,6 +44,8 @@ Plug 'preservim/nerdcommenter'
 Plug 'tpope/vim-sensible'
 Plug 'cocopon/iceberg.vim'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 call plug#end()
 
 " Colors
@@ -64,6 +66,9 @@ noremap <C-e> $
 noremap 'a `a
 noremap 'b `b
 noremap 'c `c
+
+" open ctrlp in tag mode
+nnoremap tp :CtrlPTag<cr>
 
 " Open man pages with vim pager (:Man <manpage> or K on word under cursor)
 runtime! ftplugin/man.vim
