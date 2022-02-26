@@ -82,20 +82,21 @@ let NERDTreeShowHidden=1
 let g:QuickMakeAutoDetect = 1
 
 function! s:QuickMake()
-	if g:QuickMakeAutoDetect == "1"
-		" Attempt to auto-detect build system
-		if filereadable("Makefile")
-			set makeprg=make
-		elseif filereadable("build")
-			set makeprg=./build
-		endif
-	endif
+    if g:QuickMakeAutoDetect == "1"
+        " Attempt to auto-detect build system
+        if filereadable("Makefile")
+            set makeprg=make
+        elseif filereadable("build")
+            set makeprg=./build
+        endif
+    endif
 
-	let format = &errorformat	" capture current local efm
-	:wall
-	:copen
-	silent! :make
-	let &efm=format " transfer error format to quickfix buffer
+    let format = &errorformat	" capture current local efm
+    :wall
+    :copen
+    silent! :make
+    :redraw!
+    let &efm=format " transfer error format to quickfix buffer
 endfunction
 
 command! -nargs=0 QuickMake :call s:QuickMake()
