@@ -59,7 +59,7 @@ colorscheme iceberg
 let mapleader="," 
 inoremap jk <esc> 
 " yank to system keyboard
-noremap <leader>y "*y
+noremap <leader>y "+y
 " space open/closes folds
 nnoremap <space> za
 noremap <C-k> d$
