@@ -11,6 +11,7 @@ autocmd FileType css  setlocal shiftwidth=2 tabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 autocmd FileType typescript setlocal shiftwidth=2 tabstop=2
 autocmd FileType typescriptreact setlocal shiftwidth=2 tabstop=2
+autocmd FileType typescriptreact setlocal shiftwidth=2 tabstop=2
 autocmd FileType scss setlocal shiftwidth=2 tabstop=2
 autocmd FileType text setlocal shiftwidth=2 tabstop=2
 au BufRead,BufNewFile *.txt setlocal textwidth=80
@@ -46,6 +47,7 @@ if has('autocmd') && v:version > 701
             \ )
     augroup END
 endif
+
 
 " Plugins
 call plug#begin('~/.vim/plugged')
