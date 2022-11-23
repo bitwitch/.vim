@@ -26,6 +26,14 @@ set foldenable
 set foldlevelstart=10
 set foldnestmax=10
 
+
+" Highlight custom C types
+fun! HighlightCustomCTypes()
+    syn keyword cType global local_persist function U8 U16 U32 U64 S8 S16 S32 S64 F32 F64
+endfu
+autocmd bufenter * :call HighlightCustomCTypes()
+autocmd filetype * :call HighlightCustomCTypes()
+
 " Highlight TODO, FIXME, NOTE, etc.
 if has('autocmd') && v:version > 701
     augroup todo
@@ -57,7 +65,7 @@ colorscheme iceberg
 let mapleader="," 
 inoremap jk <esc> 
 " yank to system keyboard
-noremap <leader>y "*y
+noremap <leader>y "+y
 " space open/closes folds
 nnoremap <space> za
 noremap <C-k> d$
@@ -73,6 +81,12 @@ nnoremap tp :CtrlPTag<cr>
 " Open man pages with vim pager (:Man <manpage> or K on word under cursor)
 runtime! ftplugin/man.vim
 noremap K :Man <C-R><C-W> <CR>
+
+" CtrlP ingores
+let g:ctrlp_custom_ignore = {
+\     'dir':  '\.git$\|\.yardoc\|node_modules\|log\|tmp$',
+\     'file': '\.so$\|\.dat$|\.DS_Store$'
+\ }
 
 " NERDTree
 nnoremap <leader>f :NERDTreeToggle<Enter>
