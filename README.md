@@ -1,6 +1,6 @@
 # my vim config
 
-#### Linux
+## Linux
 clone into home       
 ```$ cd ~```    
 ```$ git clone https://github.com/bitwitch/.vim.git```  
@@ -10,7 +10,7 @@ symlink config file
 
 Reload .vimrc and :PlugInstall to install plugins.  
 
-#### Windows
+## Windows
 ```$ cd %HOME%```    
 ```$ git clone https://github.com/bitwitch/.vim.git vimfiles```  
 
