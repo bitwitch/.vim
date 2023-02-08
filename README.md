@@ -15,7 +15,7 @@ Reload .vimrc and :PlugInstall to install plugins.
 ```$ git clone https://github.com/bitwitch/.vim.git vimfiles```  
 
 symlink config file  
-**Note:** You must be running cmd as admin to make sym link
+**Note:** You must be running cmd as admin to make sym link  
 ```$ mklnk _vimrc vimfiles/.vimrc```  
 
 Reload _vimrc and :PlugInstall to install plugins.  
