@@ -1,12 +1,24 @@
 # my vim config
+
+#### Linux
 clone into home       
 ```$ cd ~```    
 ```$ git clone https://github.com/bitwitch/.vim.git```  
 
-symlink config file  
+symlink config file   
 ```$ ln -sf .vim/.vimrc ~/.vimrc```  
 
 Reload .vimrc and :PlugInstall to install plugins.  
+
+#### Windows
+```$ cd %HOME%```    
+```$ git clone https://github.com/bitwitch/.vim.git vimfiles```  
+
+symlink config file  
+**Note:** You must be running cmd as admin to make sym link
+```$ mklnk _vimrc vimfiles/.vimrc```  
+
+Reload _vimrc and :PlugInstall to install plugins.  
 
 *optional*  
 ---

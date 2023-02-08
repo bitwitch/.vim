@@ -1,4 +1,5 @@
 syntax on
+set shell
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -28,7 +29,6 @@ set foldenable
 set foldlevelstart=10
 set foldnestmax=10
 
-
 " Highlight custom C types
 fun! HighlightCustomCTypes()
     syn keyword cType global local_persist function U8 U16 U32 U64 S8 S16 S32 S64 F32 F64
@@ -49,14 +49,17 @@ endif
 
 
 " Plugins
-call plug#begin('~/.vim/plugged')
+if has('win32') || has('win64')
+    call plug#begin('~/vimfiles/plugged')
+else
+    call plug#begin('~/.vim/plugged')
 Plug 'preservim/nerdtree'
 Plug 'preservim/nerdcommenter'
 Plug 'tpope/vim-sensible'
 Plug 'cocopon/iceberg.vim'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
+"Plug 'leafgarland/typescript-vim'
+"Plug 'peitalin/vim-jsx-typescript'
 call plug#end()
 
 " Colors
@@ -64,11 +67,15 @@ set t_Co=256
 set background=dark
 colorscheme iceberg
 
+" Font
+set guifont=consolas:h10
+
 " Key Mappings
 let mapleader="," 
 inoremap jk <esc> 
 " yank to system keyboard
 noremap <leader>y "+y
+noremap <leader>p "+p
 " space open/closes folds
 nnoremap <space> za
 noremap <C-k> d$
@@ -99,21 +106,20 @@ let NERDTreeShowHidden=1
 let g:QuickMakeAutoDetect = 1
 
 function! s:QuickMake()
-    if g:QuickMakeAutoDetect == "1"
-        " Attempt to auto-detect build system
-        if filereadable("Makefile")
-            set makeprg=make
-        elseif filereadable("build")
-            set makeprg=./build
-        endif
-    endif
+	if g:QuickMakeAutoDetect == "1"
+		" Attempt to auto-detect build system
+        if has('win32') || has('win64')
+            let &makeprg = getcwd() . '\build.bat'
+		else
+			set makeprg=make
+		endif
+	endif
 
-    let format = &errorformat	" capture current local efm
-    :wall
-    :copen
-    silent! :make
-    :redraw!
-    let &efm=format " transfer error format to quickfix buffer
+	let format = &errorformat	" capture current local efm
+	:wall
+	:copen
+	silent! :make
+	let &efm=format " transfer error format to quickfix buffer
 endfunction
 
 command! -nargs=0 QuickMake :call s:QuickMake()
@@ -132,6 +138,12 @@ nmap <F9> :cnext<CR>
 " change cursor shape to line in insert mode
 let &t_SI.="\e[5 q"
 let &t_EI.="\e[1 q"
+
+" remove menus and shit for gvim on windows
+:set guioptions-=m " remove menu bar
+:set guioptions-=T " remove toolbar
+:set guioptions-=r " remove right-hand scroll bar
+:set guioptions-=L " remove left-hand scroll bar
 
 " put backups in a tmp directory
 set backup
