@@ -108,7 +108,8 @@ function! s:QuickMake()
 	if g:QuickMakeAutoDetect == "1"
 		" Attempt to auto-detect build system
         if has('win32') || has('win64')
-            let &makeprg = getcwd() . '\build.bat'
+            let init_cl='"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" x86_amd64'
+            let &makeprg = init_cl . ' && ' . getcwd() . '\build.bat'
 		else
 			set makeprg=make
 		endif
