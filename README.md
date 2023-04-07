@@ -34,7 +34,7 @@ Install ctags to jump to function/variable declarations
 - For other systems see [ctags website](http://ctags.sourceforge.net/)  
 
 Create a batch file `C:\bin\init_shell.bat` that initializes the msvc compiler  
-so that you can compile with F7.  
+so that you can compile with F7 on windows.  
 example:  
 ```
 @echo off
