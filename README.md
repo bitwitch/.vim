@@ -32,3 +32,11 @@ Install ctags to jump to function/variable declarations
 - Ubuntu  
 ```$ sudo apt-get install exuberant-ctags```  
 - For other systems see [ctags website](http://ctags.sourceforge.net/)  
+
+Create a batch file `C:\bin\init_shell.bat` that initializes the msvc compiler  
+so that you can compile with F7.  
+example:  
+```
+@echo off
+call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" x86_amd64
+```
