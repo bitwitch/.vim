@@ -61,12 +61,15 @@ set guifont=consolas:h13
 " Key Mappings
 let mapleader="," 
 inoremap jk <esc> 
-" yank to system keyboard
+" yank to system clipboard
 noremap <leader>y "+y
+" paste from system clipboard
 noremap <leader>p "+p
 " space open/closes folds
 nnoremap <space> za
+" delete to end of line
 noremap <C-k> d$
+" jump to end of line
 noremap <C-e> $
 " jumping back to marks a,b,c
 noremap 'a `a
