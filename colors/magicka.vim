@@ -84,10 +84,14 @@ hi Constant guifg=#79def2 guibg=NONE guisp=NONE gui=NONE ctermfg=70 ctermbg=NONE
 " hi Number guifg=#79def2 guibg=NONE guisp=NONE gui=NONE ctermfg=123 ctermbg=NONE cterm=NONE
 " hi Number guifg=#9eab4b guibg=NONE guisp=NONE gui=NONE ctermfg=143 ctermbg=NONE cterm=NONE
 
-hi Todo guifg=#000000 guibg=#e0e0b8 guisp=#12e63c gui=NONE ctermfg=NONE ctermbg=40 cterm=NONE
+"hi Todo guifg=#000000 guibg=#e0e0b8 guisp=#12e63c gui=NONE ctermfg=NONE ctermbg=40 cterm=NONE
+hi Todo guifg=#12e63c guibg=NONE guisp=NONE gui=NONE ctermfg=40 ctermbg=NONE cterm=NONE
 
 hi Comment guifg=#12e63c guibg=NONE guisp=NONE gui=NONE ctermfg=40 ctermbg=NONE cterm=NONE
-hi NonText guifg=#382920 guibg=#1c3447 guisp=#1c3447 gui=NONE ctermfg=237 ctermbg=23 cterm=NONE
+
+"hi NonText guifg=#382920 guibg=#1c3447 guisp=#1c3447 gui=NONE ctermfg=237 ctermbg=23 cterm=NONE
+hi NonText guifg=#002b33 guibg=#002b33 guisp=#002b33 gui=NONE ctermfg=180 ctermbg=23 cterm=NONE
+
 hi DiffText guifg=NONE guibg=#c00000 guisp=#c00000 gui=bold ctermfg=NONE ctermbg=1 cterm=bold
 hi ErrorMsg guifg=#c0c0c0 guibg=#c00000 guisp=#c00000 gui=bold ctermfg=7 ctermbg=1 cterm=bold
 hi Ignore guifg=#666666 guibg=NONE guisp=NONE gui=NONE ctermfg=241 ctermbg=NONE cterm=NONE

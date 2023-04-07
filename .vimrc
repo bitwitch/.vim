@@ -6,27 +6,21 @@ set smarttab
 autocmd FileType html setlocal shiftwidth=2 tabstop=2
 autocmd FileType htmldjango setlocal shiftwidth=2 tabstop=2
 autocmd FileType twig setlocal shiftwidth=2 tabstop=2
-autocmd FileType css  setlocal shiftwidth=2 tabstop=2
-autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
-autocmd FileType typescript setlocal shiftwidth=2 tabstop=2
-autocmd FileType typescriptreact setlocal shiftwidth=2 tabstop=2
-autocmd FileType typescriptreact setlocal shiftwidth=2 tabstop=2
+autocmd FileType css setlocal shiftwidth=2 tabstop=2
 autocmd FileType scss setlocal shiftwidth=2 tabstop=2
 autocmd FileType text setlocal shiftwidth=2 tabstop=2
 au BufRead,BufNewFile *.txt setlocal textwidth=80
 au BufRead,BufNewFile *.twig setlocal filetype=html
 au BufRead,BufNewFile *.p8 setlocal filetype=lua
+au BufRead,BufNewFile *.ion setlocal filetype=c
 autocmd FileType make setlocal noexpandtab
+set backspace=indent,eol,start
 set showcmd
-filetype plugin indent on
 set wildmenu
-set lazyredraw 
+set lazyredraw
 set showmatch
 set incsearch
 set hlsearch
-set foldenable
-set foldlevelstart=10
-set foldnestmax=10
 
 " Highlight custom C types
 fun! HighlightCustomCTypes()
@@ -35,39 +29,27 @@ endfu
 autocmd bufenter * :call HighlightCustomCTypes()
 autocmd filetype * :call HighlightCustomCTypes()
 
-" Highlight TODO, FIXME, NOTE, etc.
-if has('autocmd') && v:version > 701
-    augroup todo
-        autocmd!
-        autocmd Syntax * call matchadd(
-            \ 'Debug',
-            \ '\v\W\zs<(NOTE|INFO|IDEA|TODO|FIXME|HACK)>'
-            \ )
-    augroup END
-endif
-
-
 " Plugins
 if has('win32') || has('win64')
     call plug#begin('~/vimfiles/plugged')
 else
     call plug#begin('~/.vim/plugged')
-Plug 'preservim/nerdtree'
+endif
 Plug 'preservim/nerdcommenter'
-Plug 'tpope/vim-sensible'
-Plug 'cocopon/iceberg.vim'
 Plug 'ctrlpvim/ctrlp.vim'
-"Plug 'leafgarland/typescript-vim'
-"Plug 'peitalin/vim-jsx-typescript'
 call plug#end()
 
 " Colors
 set t_Co=256
 set background=dark
-colorscheme iceberg
+if rand()%2
+    colorscheme iceberg
+else
+    colorscheme magicka
+endif
 
 " Font
-set guifont=consolas:h10
+set guifont=consolas:h13
 
 " Key Mappings
 let mapleader="," 
@@ -83,6 +65,18 @@ noremap <C-e> $
 noremap 'a `a
 noremap 'b `b
 noremap 'c `c
+" Use CTRL-L to clear the highlighting of 'hlsearch'  and call :diffupdate
+if maparg('<C-L>', 'n') ==# ''
+    nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+endif
+
+" Delete comment character when joining commented lines.
+if v:version > 703 || v:version == 703 && has("patch541")
+    set formatoptions+=j
+endif
+
+" make \ search all c files 
+noremap <nowait> <Bslash> :vimgrep  **/*.c<C-Left><Left>
 
 " open ctrlp in tag mode
 nnoremap tp :CtrlPTag<cr>
@@ -96,10 +90,6 @@ let g:ctrlp_custom_ignore = {
 \     'dir':  '\.git$\|\.yardoc\|node_modules\|log\|tmp$',
 \     'file': '\.so$\|\.dat$|\.DS_Store$'
 \ }
-
-" NERDTree
-nnoremap <leader>f :NERDTreeToggle<Enter>
-let NERDTreeShowHidden=1
 
 " compilation
 let g:QuickMakeAutoDetect = 1
