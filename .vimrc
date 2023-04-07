@@ -1,19 +1,7 @@
-syntax on
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set smarttab
-autocmd FileType html setlocal shiftwidth=2 tabstop=2
-autocmd FileType htmldjango setlocal shiftwidth=2 tabstop=2
-autocmd FileType twig setlocal shiftwidth=2 tabstop=2
-autocmd FileType css setlocal shiftwidth=2 tabstop=2
-autocmd FileType scss setlocal shiftwidth=2 tabstop=2
-autocmd FileType text setlocal shiftwidth=2 tabstop=2
-au BufRead,BufNewFile *.txt setlocal textwidth=80
-au BufRead,BufNewFile *.twig setlocal filetype=html
-au BufRead,BufNewFile *.p8 setlocal filetype=lua
-au BufRead,BufNewFile *.ion setlocal filetype=c
-autocmd FileType make setlocal noexpandtab
 set backspace=indent,eol,start
 set showcmd
 set wildmenu
@@ -21,13 +9,30 @@ set lazyredraw
 set showmatch
 set incsearch
 set hlsearch
+augroup filetype_specific_stuff
+    autocmd!
+	autocmd FileType html setlocal shiftwidth=2 tabstop=2
+	autocmd FileType htmldjango setlocal shiftwidth=2 tabstop=2
+	autocmd FileType twig setlocal shiftwidth=2 tabstop=2
+	autocmd FileType css setlocal shiftwidth=2 tabstop=2
+	autocmd FileType scss setlocal shiftwidth=2 tabstop=2
+	autocmd FileType text setlocal shiftwidth=2 tabstop=2
+	autocmd FileType make setlocal noexpandtab
+	autocmd BufRead,BufNewFile *.txt setlocal textwidth=80
+	autocmd BufRead,BufNewFile *.twig setlocal filetype=html
+	autocmd BufRead,BufNewFile *.p8 setlocal filetype=lua
+	autocmd BufRead,BufNewFile *.ion setlocal filetype=c
+augroup end
 
 " Highlight custom C types
 fun! HighlightCustomCTypes()
     syn keyword cType global local_persist function U8 U16 U32 U64 S8 S16 S32 S64 F32 F64
 endfu
-autocmd bufenter * :call HighlightCustomCTypes()
-autocmd filetype * :call HighlightCustomCTypes()
+augroup highlight_custom_types
+    autocmd!
+	autocmd bufenter * :call HighlightCustomCTypes()
+	autocmd filetype * :call HighlightCustomCTypes()
+augroup end
 
 " Plugins
 if has('win32') || has('win64')
@@ -40,6 +45,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 
 " Colors
+syntax on
 set t_Co=256
 set background=dark
 if rand()%2
@@ -69,6 +75,7 @@ noremap 'c `c
 if maparg('<C-L>', 'n') ==# ''
     nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 endif
+
 
 " Delete comment character when joining commented lines.
 if v:version > 703 || v:version == 703 && has("patch541")
