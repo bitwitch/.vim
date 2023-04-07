@@ -11,6 +11,7 @@ set incsearch
 set hlsearch
 augroup filetype_specific_stuff
     autocmd!
+	autocmd FileType c,cpp let b:comment_leader = '// '
 	autocmd FileType html setlocal shiftwidth=2 tabstop=2
 	autocmd FileType htmldjango setlocal shiftwidth=2 tabstop=2
 	autocmd FileType twig setlocal shiftwidth=2 tabstop=2
@@ -76,6 +77,8 @@ if maparg('<C-L>', 'n') ==# ''
     nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 endif
 
+" use // for c comments
+let g:NERDCustomDelimiters = { 'c': { 'left': '// ','right': '' } }
 
 " Delete comment character when joining commented lines.
 if v:version > 703 || v:version == 703 && has("patch541")
