@@ -77,6 +77,8 @@ noremap <C-e> $
 noremap 'a `a
 noremap 'b `b
 noremap 'c `c
+" delete to beginning of word in insert mode
+inoremap <C-Bs> <C-o>diw
 " Use CTRL-L to clear the highlighting of 'hlsearch'  and call :diffupdate
 if maparg('<C-L>', 'n') ==# ''
     nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
