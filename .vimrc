@@ -51,10 +51,10 @@ call plug#end()
 syntax on
 set t_Co=256
 set background=dark
-if rand()%2
-    colorscheme iceberg
+if has("gui_running")
+	colorscheme magicka
 else
-    colorscheme magicka
+	colorscheme iceberg
 endif
 
 " Font
