@@ -92,8 +92,8 @@ if v:version > 703 || v:version == 703 && has("patch541")
     set formatoptions+=j
 endif
 
-" make \ search all c files 
-noremap <nowait> <Bslash> :vimgrep  **/*.c<C-Left><Left>
+" make \ search all .c and .h files 
+noremap <nowait> <Bslash> :vimgrep  **/*.c **/*.h<C-Left><C-Left><Left>
 
 " open ctrlp in tag mode
 nnoremap tp :CtrlPTag<cr>

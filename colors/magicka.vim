@@ -35,7 +35,7 @@ let g:colors_name = "magicka"
 hi Normal guifg=#d6bc9f guibg=#002b33 guisp=#002b33 gui=NONE ctermfg=180 ctermbg=23 cterm=NONE
 hi CTagsMember guifg=#d6bc9f guibg=NONE guisp=NONE gui=NONE ctermfg=158 ctermbg=NONE cterm=NONE
 
-hi IncSearch guifg=#000000 guibg=#a6556a guisp=#a6556a gui=bold,underline ctermfg=66 ctermbg=189 cterm=NONE
+hi IncSearch guifg=#000000 guibg=#e2e2e2 guisp=#e2e2e2 gui=bold,underline ctermfg=66 ctermbg=189 cterm=NONE
 hi WildMenu guifg=#000000 guibg=#804000 guisp=#804000 gui=NONE ctermfg=NONE ctermbg=3 cterm=NONE
 hi SpecialComment guifg=#556065 guibg=NONE guisp=NONE gui=NONE ctermfg=241 ctermbg=NONE cterm=NONE
 hi Title guifg=#60b0ea guibg=NONE guisp=NONE gui=NONE ctermfg=74 ctermbg=NONE cterm=NONE
